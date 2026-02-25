@@ -1,29 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:fruits_hub/core/assets/app_assets.dart';
-import 'package:fruits_hub/core/utils/app_colors.dart';
-import 'package:fruits_hub/core/utils/app_strings.dart';
-import 'package:fruits_hub/core/utils/app_styles.dart';
-import 'package:fruits_hub/features/onbording/presentation/views/widgets/OnBordingPageViewItemBody.dart';
-import 'package:fruits_hub/features/onbording/presentation/views/widgets/on_bording_page_view.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_hub/core/functions/navigation.dart';
+import 'package:fruits_hub/core/route/app_rotuer.dart';
+import 'package:fruits_hub/features/onbording/presentation/manger/cubit/on_bording_cubit.dart';
+import 'package:fruits_hub/features/onbording/presentation/views/widgets/CustomDots.dart';
+import 'package:fruits_hub/features/onbording/presentation/views/widgets/PageViewBody.dart';
+import 'package:fruits_hub/features/onbording/presentation/views/widgets/VisibilityButton.dart';
 
 class OnBordingViewBody extends StatelessWidget {
-  const OnBordingViewBody({super.key});
-
+   const OnBordingViewBody({super.key});
   @override
   Widget build(BuildContext context) {
-    return PageView(
-      children: [
-        OnBordingPageViewItemBody(
-          backgraound: AppAssets.AppAssetsImagesPageViewItem1BackgroundImage,
-          image: AppAssets.AppAssetsImagesPageViewItem1Image,
-          list_title: [
-            AppStrings.welcome,
-            AppStrings.hub,
-            AppStrings.fruit,
-          ], subtitle: AppStrings.subtitlePageOneOnbording,
-        ),
-      ],
+    final cubit = context.read<OnBordingCubit>();
+    return BlocListener<OnBordingCubit, OnBordingState>(
+      listener: (context, state) {
+        if (state.status == OnBordingStatus.success) {
+          customNavigatepushReplacement(context, AppRotuer.kSigninView);
+        }
+      },
+      child: BlocBuilder<OnBordingCubit, OnBordingState>(
+        builder: (context, state) {
+          return Column(
+            children: [
+              Expanded(
+                child: PageviewBody(
+                  onPageChanged: cubit.onPageChanged,
+                  controller: cubit.pageController,
+                ),
+              ),
+              CustomDots(controller: cubit.pageController),
+              const SizedBox(height: 29),
+              VisibilityButton(
+                isVisible: state.pageIndex == 1,
+                onpressed: cubit.getStarted,
+              ),
+            ],
+          );
+        },
+      ),
     );
   }
 }
-
