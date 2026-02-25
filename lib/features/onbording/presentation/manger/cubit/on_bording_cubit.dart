@@ -1,6 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:fruits_hub/core/database/cache/cacheKeys.dart';
+import 'package:fruits_hub/core/database/cache/cache_helper.dart';
+import 'package:fruits_hub/core/services/service_locator.dart';
 
 part 'on_bording_state.dart';
 
@@ -20,7 +23,12 @@ class OnBordingCubit extends Cubit<OnBordingState> {
     try {
       emit(state.copyWith(status: OnBordingStatus.loading));
       await Future.delayed(const Duration(milliseconds: 300));
+         await getIt<CacheHelper>().saveData(
+      key: CacheKeys.onBoardingVisited,
+      value: true,
+    );
       emit(state.copyWith(status: OnBordingStatus.success));
+
     } catch (e) {
       emit(state.copyWith(status: OnBordingStatus.failure, errorMessage: e.toString()));
     }
