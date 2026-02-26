@@ -3,7 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/utils/app_colors.dart';
-import 'package:fruits_hub/core/utils/app_strings.dart';
+import 'package:fruits_hub/core/utils/app_strings/app_strings.dart';
 import 'package:fruits_hub/core/utils/app_styles.dart';
 import 'package:fruits_hub/generated/l10n.dart';
 
@@ -16,11 +16,13 @@ class CustonBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(16),
-      height: 70,
+      
+      height: 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primaryColor,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          
         ),
         onPressed: onpressed,
         child: Text(text, style: CustomTextStyles.Cairo700style16),

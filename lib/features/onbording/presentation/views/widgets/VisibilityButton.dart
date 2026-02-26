@@ -2,7 +2,7 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:fruits_hub/core/utils/app_strings.dart';
+import 'package:fruits_hub/core/utils/app_strings/app_strings.dart';
 import 'package:fruits_hub/core/widgets/CustonBtn.dart';
 
 class VisibilityButton extends StatelessWidget {

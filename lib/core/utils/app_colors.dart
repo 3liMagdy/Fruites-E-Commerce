@@ -13,6 +13,8 @@ abstract class AppColors {
 static Color orange = const Color(0xffF4A91F);
 static Color backgroundonbording1 = const Color(0xffFCF4E3);
 static Color backgroundonbording2 = const Color(0xffB0E8C7);
+ static Color green600 = const Color(0xff2D9F5D);
+ static Color green500 = const Color(0xff1B5E37);
 
 
 }

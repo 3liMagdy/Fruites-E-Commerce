@@ -18,9 +18,32 @@ class SplaahViewBody extends StatefulWidget {
 class _SplaahViewBodyState extends State<SplaahViewBody> {
   @override
   void initState() {
-    _checkOnBoarding(context);
+     WidgetsBinding.instance.addPostFrameCallback((_) {
+      _checkOnBoarding();
+    });
     super.initState();
   }
+
+
+
+    Future<void> _checkOnBoarding() async {
+    await Future.delayed(const Duration(seconds: 2));
+
+    final visited = getIt<CacheHelper>()
+      .getBool(key: CacheKeys.onBoardingVisited);
+
+     if (!mounted) return;
+
+    // Use GoRouter's `go` to replace the stack.
+    if (visited) {
+       customNavigatepushReplacement(context, AppRotuer.kSigninView);
+
+    } else {
+      customNavigatepushReplacement(context, AppRotuer.kOnBordingView);
+
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -43,21 +66,4 @@ class _SplaahViewBodyState extends State<SplaahViewBody> {
 
 
 
-  Future<void> _checkOnBoarding(dynamic context) async {
-    await Future.delayed(const Duration(seconds: 2));
-
-    final visited = getIt<CacheHelper>()
-      .getBool(key: CacheKeys.onBoardingVisited);
-
-   // if (!mounted) return;
-
-    // Use GoRouter's `go` to replace the stack.
-    if (visited) {
-       customNavigatepushReplacement(context, AppRotuer.kSigninView);
-
-    } else {
-      customNavigatepushReplacement(context, AppRotuer.kOnBordingView);
-
-    }
-  }
 

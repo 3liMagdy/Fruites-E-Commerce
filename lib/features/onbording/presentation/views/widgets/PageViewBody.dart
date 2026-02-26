@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/assets/app_assets.dart';
 import 'package:fruits_hub/core/utils/app_colors.dart';
-import 'package:fruits_hub/core/utils/app_strings.dart';
+import 'package:fruits_hub/core/utils/app_strings/app_strings.dart';
 import 'package:fruits_hub/features/onbording/presentation/views/widgets/OnBordingPageViewItemBody.dart';
 
 class PageviewBody extends StatelessWidget {

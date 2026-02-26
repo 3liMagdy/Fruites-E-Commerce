@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:fruits_hub/core/utils/app_strings.dart';
+import 'package:fruits_hub/core/utils/app_strings/app_strings.dart';
 import 'package:fruits_hub/features/onbording/presentation/manger/cubit/on_bording_cubit.dart';
 
 class CustomStackWidget extends StatelessWidget {

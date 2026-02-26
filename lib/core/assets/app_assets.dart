@@ -92,6 +92,11 @@ class AppAssets {
 
   /// Assets for AppAssetsImagesWatermelonTest
   /// assets/images/watermelon_test.png
+  
   static const String AppAssetsImagesWatermelonTest = "assets/images/watermelon_test.png";
+
+static const String AppAssetsImagesArrow = "assets/images/icon_arrow.svg";
+
+
 }
 

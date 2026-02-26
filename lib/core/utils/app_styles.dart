@@ -17,6 +17,18 @@ abstract class CustomTextStyles {
     color: AppColors.black,
     fontFamily: "Cairo",
   );
+   static final Cairo600style16 = TextStyle(
+    fontSize: 13,
+    fontWeight: FontWeight.w600,
+    color: AppColors.lightGrey,
+    fontFamily: "Cairo",
+  );
+  static final Cairo700style19 = TextStyle(
+    fontSize: 19,
+    fontWeight: FontWeight.w700,
+    color: AppColors.black,
+    fontFamily: "Cairo",
+  );
 
 static final Cairo700style16 = TextStyle(
     fontSize: 16,
@@ -27,6 +39,12 @@ static final Cairo700style16 = TextStyle(
   static final Cairo400style13 = TextStyle(
     fontSize: 13,
     fontWeight: FontWeight.w400,
+    color: AppColors.lightGrey,
+    fontFamily: "Cairo",
+  );
+   static final Cairo700style13 = TextStyle(
+    fontSize: 13,
+    fontWeight: FontWeight.w700,
     color: AppColors.lightGrey,
     fontFamily: "Cairo",
   );
