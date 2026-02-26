@@ -18,7 +18,7 @@ abstract class CustomTextStyles {
     fontFamily: "Cairo",
   );
    static final Cairo600style16 = TextStyle(
-    fontSize: 13,
+    fontSize: 16,
     fontWeight: FontWeight.w600,
     color: AppColors.lightGrey,
     fontFamily: "Cairo",

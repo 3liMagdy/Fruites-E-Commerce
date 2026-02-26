@@ -27,14 +27,14 @@ abstract class AuthStrings {
   static const String loginNow = "تسجيل دخول";
 
   static const String agreeToTermsPrefix = "من خلال إنشاء حساب، فإنك توافق على ";
-  static const String termsAndConditions = "الشروط والأحكام";
+  static const String termsAndConditions =  " الشروط والأحكام الخاصه بنا";
 
   // ================== Forgot Password ==================
 
-  static const String forgotPasswordTitle = "نسيت كلمة المرور";
+  static const String forgotPasswordTitle = "نسيان كلمة المرور";
   static const String forgotPasswordDescription =
       "لا تقلق! فقط أدخل رقم هاتفك وسنرسل رمز التحقق إليك";
-  static const String phoneNumberHint = "+20 123 567 8911";
+  static const String phoneNumberHint = "  رقم الجوال";
   static const String sendPasswordResetButton = "تعيين كلمة المرور";
 
   // ================== OTP Verification ==================
@@ -47,11 +47,11 @@ abstract class AuthStrings {
 
   // ================== Reset Password ==================
 
-  static const String resetPasswordTitle = "إنشاء كلمة مرور جديدة";
-  static const String newPasswordHint = "كلمة المرور الجديدة";
+  static const String resetPasswordTitle =  " قم بإنشاء كلمة مرور جديدة لتسجيل الدخول";
+  static const String newPasswordHint = "كلمة مرور جديدة";
   static const String confirmNewPasswordHint = "تأكيد كلمة المرور الجديدة";
-  static const String createNewPasswordButton = "إنشاء كلمة مرور جديدة";
-
+  static const String createNewPasswordhint = " كلمة المرور الجديدة";
+  static const String createNewPasswordbutton = " إنشاء كلمة المرور الجديدة";
   // ================== Success ==================
 
   static const String passwordChangedSuccess = "تم تغيير الباسورد بنجاح";

@@ -17,6 +17,7 @@ class CustomTopBar extends StatelessWidget {
           Align(
             alignment: Alignment.bottomRight,
             child: GestureDetector(
+              
               onTap: () {},
               child: Padding(
                 padding: const EdgeInsets.only(right: 16),

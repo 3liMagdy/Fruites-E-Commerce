@@ -8,4 +8,5 @@ abstract class AppStrings {
   static const titlePageOneOnbording2 ="ابحث وتسوق";
    static const subtitlePageOneOnbording2="نقدم لك أفضل الفواكه المختارة بعناية. اطلع على التفاصيل والصور والتقييمات لتتأكد من اختيار الفاكهة المثالية";
    static const startnow="ابدأ الان";
+   static const phoneCountry="+20";
 }

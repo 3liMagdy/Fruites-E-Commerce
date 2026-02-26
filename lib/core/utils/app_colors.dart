@@ -16,5 +16,4 @@ static Color backgroundonbording2 = const Color(0xffB0E8C7);
  static Color green600 = const Color(0xff2D9F5D);
  static Color green500 = const Color(0xff1B5E37);
 
-
 }

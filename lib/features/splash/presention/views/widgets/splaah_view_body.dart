@@ -36,7 +36,7 @@ class _SplaahViewBodyState extends State<SplaahViewBody> {
 
     // Use GoRouter's `go` to replace the stack.
     if (visited) {
-       customNavigatepushReplacement(context, AppRotuer.kSigninView);
+       customNavigatepushReplacement(context, AppRotuer.kresetPassword);
 
     } else {
       customNavigatepushReplacement(context, AppRotuer.kOnBordingView);
