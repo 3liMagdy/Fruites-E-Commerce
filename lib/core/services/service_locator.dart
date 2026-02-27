@@ -1,6 +1,9 @@
 
 
 import 'package:fruits_hub/core/database/cache/cache_helper.dart';
+import 'package:fruits_hub/features/Auth/data/repos/auth_repo_impl.dart';
+import 'package:fruits_hub/features/Auth/data/services/firebase_auth_service.dart';
+import 'package:fruits_hub/features/Auth/domain/repos/auth_repo.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -16,4 +19,12 @@ Future<void> setupServiceLocator() async {
     final prefs = await SharedPreferences.getInstance();
     return CacheHelper(prefs);
   });
+
+   getIt.registerLazySingleton<FirebaseAuthService>(
+    () => FirebaseAuthService(),
+  );
+
+  getIt.registerLazySingleton<AuthRepo>(
+    () => AuthRepoImpl(getIt()),
+  );
 }

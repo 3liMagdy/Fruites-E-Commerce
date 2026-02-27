@@ -17,6 +17,9 @@ abstract class AuthStrings {
   static const String continueWithApple = "تسجيل بواسطة أبل";
   static const String continueWithFacebook = "تسجيل بواسطة فيسبوك";
 
+  static const String showToastSuccess = "تم تسجيل الدخول بنجاح";
+  
+
   // ================== Sign Up ==================
 
   static const String createAccountTitle = "حساب جديد";
@@ -28,6 +31,9 @@ abstract class AuthStrings {
 
   static const String agreeToTermsPrefix = "من خلال إنشاء حساب، فإنك توافق على ";
   static const String termsAndConditions =  " الشروط والأحكام الخاصه بنا";
+  static const String showToastSuccessSignUp = "تم انشاءالحساب بنجاح";
+ static const String pleaseAcceptTermsAndConditions = "من فضلك وافق على الشروط ";
+  
 
   // ================== Forgot Password ==================
 

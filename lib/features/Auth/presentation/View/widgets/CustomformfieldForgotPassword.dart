@@ -5,7 +5,8 @@ import 'package:fruits_hub/core/widgets/CustonBtn.dart';
 import 'package:fruits_hub/features/Auth/presentation/View/widgets/CustomTextFormField.dart';
 
 class CustomformfieldForgotPassword extends StatelessWidget {
-  const CustomformfieldForgotPassword({super.key});
+   CustomformfieldForgotPassword({super.key});
+ TextEditingController phonecontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +18,7 @@ class CustomformfieldForgotPassword extends StatelessWidget {
             Directionality(
               textDirection: TextDirection.ltr ,
               child: CustomTextFormField(
+                controller: phonecontroller,
                 labelText: AuthStrings.phoneNumberHint,
                 keyboardType: TextInputType.phone,
                 prefix:Text(AppStrings.phoneCountry),

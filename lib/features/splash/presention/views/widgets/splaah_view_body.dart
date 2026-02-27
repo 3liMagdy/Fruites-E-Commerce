@@ -6,6 +6,7 @@ import 'package:fruits_hub/core/database/cache/cache_helper.dart';
 import 'package:fruits_hub/core/functions/navigation.dart';
 import 'package:fruits_hub/core/route/app_rotuer.dart';
 import 'package:fruits_hub/core/services/service_locator.dart';
+import 'package:fruits_hub/features/Auth/domain/repos/auth_repo.dart';
 import 'package:go_router/go_router.dart';
 
 class SplaahViewBody extends StatefulWidget {
@@ -36,8 +37,12 @@ class _SplaahViewBodyState extends State<SplaahViewBody> {
 
     // Use GoRouter's `go` to replace the stack.
     if (visited) {
-       customNavigatepushReplacement(context, AppRotuer.kresetPassword);
-
+      if (getIt<AuthRepo>().isLoggedIn()){
+        customNavigatepushReplacement(context, AppRotuer.kHomeRoute);
+      }else{
+         customNavigatepushReplacement(context, AppRotuer.kSigninView);
+      }
+      
     } else {
       customNavigatepushReplacement(context, AppRotuer.kOnBordingView);
 

@@ -1,17 +1,36 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/app/fruits.dart';
+import 'package:fruits_hub/core/app_cubit/app_cubit.dart';
 import 'package:fruits_hub/core/services/service_locator.dart';
+import 'package:fruits_hub/features/Auth/domain/repos/auth_repo.dart';
+import 'package:fruits_hub/features/Auth/presentation/manger/cubit/auth_cubit.dart';
+import 'package:fruits_hub/firebase_options.dart';
 
-void main() {
+void main()async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Start service locator initialization but do NOT await here.
-  // Awaiting plugin-backed async initializers before the engine and
-  // plugin registration is guaranteed on the native side can cause
-  // platform-channel failures. The app will wait for readiness inside
-  // the top-level widget instead.
-  setupServiceLocator();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
-  runApp(const FruitsHub());
+  await setupServiceLocator();
+
+ runApp(
+  MultiBlocProvider(
+    providers: [
+      BlocProvider(
+        create: (_) => AppCubit(getIt<AuthRepo>())..checkAuthStatus(),
+      ),
+      BlocProvider(
+        create: (context) => AuthCubit(
+          getIt<AuthRepo>(),
+          context.read<AppCubit>(),
+        ),
+      ),
+    ],
+    child: const FruitsHub(),
+  ),
+);
 }
-

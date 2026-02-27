@@ -6,15 +6,18 @@ import 'package:fruits_hub/core/utils/app_strings/Auth_strings.dart';
 import 'package:fruits_hub/features/Auth/presentation/View/widgets/CustomTextSpan.dart';
 
 class TermsAndConditionsWidget extends StatelessWidget {
-  const TermsAndConditionsWidget({super.key});
+  const TermsAndConditionsWidget({super.key, required this.isCheck, required this.onChanged});
+  final bool isCheck;
+  final ValueChanged<bool?> onChanged;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
       Checkbox(
-          value: false,
-          onChanged: (value) {},
+          value: isCheck,
+          onChanged: onChanged,
+          
         ),
         Expanded(
           child: CustomTextSpan(

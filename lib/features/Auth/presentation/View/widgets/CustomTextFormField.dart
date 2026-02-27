@@ -10,7 +10,7 @@ class CustomTextFormField extends StatelessWidget {
     this.onChanged,
     this.onFieldSubmitted,
     this.obscureText,
-    this.suffixIcon, this.keyboardType, this.prefix, this.textDirection, this.textAlign,
+    this.suffixIcon, this.keyboardType, this.prefix, this.textDirection, this.textAlign, required this.controller,
     
   });
   final String labelText;
@@ -22,10 +22,12 @@ class CustomTextFormField extends StatelessWidget {
   final Widget? prefix;
   final TextDirection? textDirection;
   final TextAlign? textAlign;
+  final TextEditingController controller ;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       validator: (value) {
         if (value!.isEmpty) {
           return "This field is required";
