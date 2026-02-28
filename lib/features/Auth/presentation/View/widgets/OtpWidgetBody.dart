@@ -7,14 +7,16 @@ import 'package:fruits_hub/features/Auth/presentation/View/widgets/OtpInputVerif
 import 'package:pinput/pinput.dart';
 
 class OtpWidgetBody extends StatelessWidget {
-  const OtpWidgetBody({
+   OtpWidgetBody({
     super.key,
     required this.defaultPinTheme,
     required this.focusedPinTheme,
+    required this.onCompleted,
   });
 
   final PinTheme defaultPinTheme;
   final PinTheme focusedPinTheme;
+  void Function(String) onCompleted;
 
   @override
   Widget build(BuildContext context) {
@@ -23,11 +25,11 @@ class OtpWidgetBody extends StatelessWidget {
       child: Directionality(
         textDirection: TextDirection.ltr,
         child: OtpInputVerifyAccount(
-          length: 4,
+          length: 6,
           defaultPinTheme: defaultPinTheme,
           focusedPinTheme: focusedPinTheme,
           separatorWidth: fieldSpacing,
-          onCompleted: (value) {},
+          onCompleted:onCompleted ,
         ),
       ),
     );

@@ -18,4 +18,16 @@ final class AuthFuiledState extends AuthState {
   const AuthFuiledState(this.errormessage);
 }
 
+final class AuthPasswordResetEmailSent extends AuthState {
+  final String message;
+  const AuthPasswordResetEmailSent(this.message);
+}
 
+final class AuthCodeSent extends AuthState {
+  final String verificationId;
+  const AuthCodeSent(this.verificationId);
+}
+
+final class AuthOtpVerified extends AuthState {}
+
+final class AuthPasswordUpdated extends AuthState {}

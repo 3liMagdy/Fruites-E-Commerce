@@ -89,7 +89,7 @@ class _CustomformfieldState extends State<Customformfield> {
               Align(
                 alignment: Alignment.centerLeft,
                 child: CustomForgotPasswordText(
-                  onTap: () {
+                  onTap: () {           
                     customNavigate(context, AppRotuer.kForgotPasswordView);
                   },
                 ),

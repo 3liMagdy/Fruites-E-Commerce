@@ -3,10 +3,12 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fruits_hub/core/assets/app_assets.dart';
 import 'package:fruits_hub/core/utils/app_strings/Auth_strings.dart';
 import 'package:fruits_hub/features/Auth/presentation/View/widgets/SocialLoginButton.dart';
+import 'package:fruits_hub/features/Auth/presentation/manger/cubit/auth_cubit.dart';
 
 class Socialbuttons extends StatelessWidget {
   const Socialbuttons({super.key});
@@ -20,7 +22,9 @@ class Socialbuttons extends StatelessWidget {
            SocialLoginButton(
                 text: AuthStrings.continueWithGoogle,
                 icon: SvgPicture.asset(AppAssets.AppAssetsImagesGoogleIcon),
-                onTap: () {},
+                onTap: () {
+                  context.read<AuthCubit>().signInWithGoogle();
+                },
               ),
               SizedBox(height: 16),
               SocialLoginButton(
@@ -32,7 +36,9 @@ class Socialbuttons extends StatelessWidget {
               SocialLoginButton(
                 text: AuthStrings.continueWithFacebook,
                 icon: SvgPicture.asset(AppAssets.AppAssetsImagesFacebookIcon),
-                onTap: () {},
+                onTap: () {
+                  context.read<AuthCubit>().signInWithFacebook();
+                },
               ),
         ],
       ),
