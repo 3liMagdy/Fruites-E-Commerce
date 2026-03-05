@@ -1,8 +1,10 @@
 
 
 import 'package:fruits_hub/core/database/cache/cache_helper.dart';
+import 'package:fruits_hub/core/services/data_service.dart';
+import 'package:fruits_hub/core/services/firestore_service.dart';
 import 'package:fruits_hub/features/Auth/data/repos/auth_repo_impl.dart';
-import 'package:fruits_hub/features/Auth/data/services/firebase_auth_service.dart';
+import 'package:fruits_hub/core/services/firebase_auth_service.dart';
 import 'package:fruits_hub/features/Auth/domain/repos/auth_repo.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -23,8 +25,11 @@ Future<void> setupServiceLocator() async {
    getIt.registerLazySingleton<FirebaseAuthService>(
     () => FirebaseAuthService(),
   );
+   getIt.registerLazySingleton<DataService>(
+    () => FirestoreService(),
+  );
 
   getIt.registerLazySingleton<AuthRepo>(
-    () => AuthRepoImpl(getIt()),
+    () => AuthRepoImpl(getIt<FirebaseAuthService>(), dataService: getIt<DataService>()),
   );
 }

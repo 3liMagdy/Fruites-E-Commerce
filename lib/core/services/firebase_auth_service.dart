@@ -249,4 +249,8 @@ Future<void> verifyOtp({
     );
   }
 }
+
+Future deletUser(){
+  return _auth.currentUser!.delete();
+}
 }

@@ -10,4 +10,6 @@ class UserEntity {
     required this.email,
     required this.name,
   });
+
+  tomap() => {'id': id, 'email': email, 'name': name};
 }

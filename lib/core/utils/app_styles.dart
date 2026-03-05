@@ -49,5 +49,34 @@ static final Cairo700style16 = TextStyle(
     fontFamily: "Cairo",
   );
 
+static final Cairo400style14 = TextStyle(
+  fontSize: 14,
+  fontWeight: FontWeight.w400,
+  color: AppColors.grey,
+  fontFamily: "Cairo",
+);
+
+static final Cairo600style14Primary = TextStyle(
+  fontSize: 14,
+  fontWeight: FontWeight.w600,
+  color: AppColors.primaryColor,
+  fontFamily: "Cairo",
+);
+
+static final Cairo600style13Orange = TextStyle(
+  fontSize: 13,
+  fontWeight: FontWeight.w600,
+  color: AppColors.orange,
+  fontFamily: "Cairo",
+);
+
+static final Cairo700style16Primary = TextStyle(
+  fontSize: 16,
+  fontWeight: FontWeight.w700,
+  color: AppColors.primaryColor,
+  fontFamily: "Cairo",
+);
+
+
 
 }

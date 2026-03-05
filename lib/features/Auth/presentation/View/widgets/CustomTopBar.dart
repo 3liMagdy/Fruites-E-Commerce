@@ -22,7 +22,7 @@ class CustomTopBar extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(right: 16),
                 child: SvgPicture.asset(
-                  AppAssets.AppAssetsImagesArrow,
+                  AppAssets.imagesIconArrow,
                   height: 18,
                   width: 18,
                   color: Colors.black,

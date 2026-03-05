@@ -57,11 +57,11 @@ class _SplaahViewBodyState extends State<SplaahViewBody> {
       children: [
         Align(
           alignment: Alignment.topLeft,
-          child: SvgPicture.asset(AppAssets.AppAssetsImagesPlant),
+          child: SvgPicture.asset(AppAssets.imagesPlant),
         ),
-        SvgPicture.asset(AppAssets.AppAssetsImagesLogo),
+        SvgPicture.asset(AppAssets.imagesLogo),
         SvgPicture.asset(
-          AppAssets.AppAssetsImagesSplashBottom,
+          AppAssets.imagesSplashBottom,
           fit: BoxFit.fill,
         ),
       ],

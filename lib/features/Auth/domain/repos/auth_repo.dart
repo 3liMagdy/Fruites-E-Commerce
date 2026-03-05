@@ -34,4 +34,9 @@ Future<Either<Failure, void>> updatePassword(String newPassword);
 
  bool isLoggedIn();
 UserEntity? getCurrentUser();
+
+ Future addDataUser({required UserEntity user});
+ Future deletUser();
+
+  Future<UserEntity> getUserData({required String uid});
 }

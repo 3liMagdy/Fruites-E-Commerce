@@ -21,7 +21,7 @@ class Socialbuttons extends StatelessWidget {
         children: [
            SocialLoginButton(
                 text: AuthStrings.continueWithGoogle,
-                icon: SvgPicture.asset(AppAssets.AppAssetsImagesGoogleIcon),
+                icon: SvgPicture.asset(AppAssets.imagesGoogleIcon),
                 onTap: () {
                   context.read<AuthCubit>().signInWithGoogle();
                 },
@@ -29,13 +29,13 @@ class Socialbuttons extends StatelessWidget {
               SizedBox(height: 16),
               SocialLoginButton(
                 text: AuthStrings.continueWithApple,
-                icon: SvgPicture.asset(AppAssets.AppAssetsImagesApplIcon),
+                icon: SvgPicture.asset(AppAssets.imagesApplIcon),
                 onTap: () {},
               ),
               SizedBox(height: 16),
               SocialLoginButton(
                 text: AuthStrings.continueWithFacebook,
-                icon: SvgPicture.asset(AppAssets.AppAssetsImagesFacebookIcon),
+                icon: SvgPicture.asset(AppAssets.imagesFacebookIcon),
                 onTap: () {
                   context.read<AuthCubit>().signInWithFacebook();
                 },
