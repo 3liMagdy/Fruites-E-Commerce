@@ -1,9 +1,13 @@
+import 'dart:convert';
+
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruits_hub/core/errors/exceptions.dart';
 import 'package:fruits_hub/core/errors/failures.dart';
 import 'package:fruits_hub/core/services/data_service.dart';
 import 'package:fruits_hub/core/services/firebase_auth_service.dart';
+import 'package:fruits_hub/core/services/shared_prefs.dart';
+import 'package:fruits_hub/core/utils/app_constant.dart';
 import 'package:fruits_hub/core/utils/backend_endPoint.dart';
 import 'package:fruits_hub/features/Auth/data/user_model.dart';
 import 'package:fruits_hub/features/Auth/domain/entities/user_entity.dart';
@@ -29,7 +33,21 @@ class AuthRepoImpl implements AuthRepo {
           .createUserWithEmailAndPassword(email: email, password: password);
        UserEntity userEntity=UserModel.fromFirebase(firebaseUser);
       await firebaseUser.updateDisplayName(name);
-       await addDataUser(user:UserEntity(id: userEntity.id, email: email, name: name));
+      await addDataUser(
+  user: UserEntity(
+    id: userEntity.id,
+    email: email,
+    name: name,
+  ),
+);
+
+await saveUserEntity(
+  user: UserEntity(
+    id: userEntity.id,
+    email: email,
+    name: name,
+  ),
+);
      
       return right(userEntity);
     } catch (e) {
@@ -50,7 +68,9 @@ class AuthRepoImpl implements AuthRepo {
         email: email,
         password: password,
       );
+      saveUserEntity(user: UserModel.fromFirebase(firebaseUser));
       var userEntity =await getUserData(uid: firebaseUser.uid);
+      await saveUserEntity(user:  userEntity);
       
       return right(userEntity);
     } catch (e) {
@@ -81,31 +101,51 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, UserEntity>> signInWithGoogle() async {
+ Future<Either<Failure, UserEntity>> signInWithGoogle() async {
 
-    User? firebaseUser;
-    try {
-        firebaseUser = await firebaseAuthService.signInWithGoogle();
-     UserEntity userEntity=UserModel.fromFirebase(firebaseUser);
-  var isUserExists= await dataService.checkIfDataExists(path:BackendEndPoint.isCheckUserExists, document_id: firebaseUser.uid);
-     if(isUserExists){
-     await getUserData(uid: firebaseUser.uid);
-     }else{
-       await addDataUser(user: userEntity);
-     }
-     
+  User? firebaseUser;
+
+  try {
+
+    firebaseUser = await firebaseAuthService.signInWithGoogle();
+
+    UserEntity userEntity = UserModel.fromFirebase(firebaseUser);
+
+    var isUserExists = await dataService.checkIfDataExists(
+      path: BackendEndPoint.isCheckUserExists,
+      document_id: firebaseUser.uid,
+    );
+
+    if (isUserExists) {
+
+      var user = await getUserData(uid: firebaseUser.uid);
+
+      await saveUserEntity(user: user);
+
+      return right(user);
+
+    } else {
+
+      await addDataUser(user: userEntity);
+
+      await saveUserEntity(user: userEntity);
 
       return right(userEntity);
-    } on CustomException catch (e) {
-      return left(ServerFailure(e.message));
-    } catch (e) {
-        if (firebaseUser != null) {
-        deletUser();
-      }
-      return left(ServerFailure("حدث خطأ غير متوقع"));
     }
-  }
 
+  } on CustomException catch (e) {
+
+    return left(ServerFailure(e.message));
+
+  } catch (e) {
+
+    if (firebaseUser != null) {
+      deletUser();
+    }
+
+    return left(ServerFailure("حدث خطأ غير متوقع"));
+  }
+}
   @override
   Future<Either<Failure, void>> signOut() async {
     try {
@@ -189,7 +229,7 @@ class AuthRepoImpl implements AuthRepo {
   @override
   Future<dynamic> addDataUser({required UserEntity user})async {
    
-   await dataService.addData(path:BackendEndPoint.addUserData, data: user.tomap(),documentId: user.id);
+   await dataService.addData(path:BackendEndPoint.addUserData, data: UserModel.UserEntity(user).tomap(),documentId: user.id);
   }
   
   @override
@@ -201,5 +241,12 @@ class AuthRepoImpl implements AuthRepo {
   Future<UserEntity> getUserData({required String uid}) async{
     var data =await dataService.getData(path: BackendEndPoint.getUserData, document_id: uid);
     return  UserModel.fromJson(data);
+  }
+  
+  @override
+  Future saveUserEntity({required UserEntity user})async {
+     var datajson= jsonEncode(UserModel.UserEntity(user).tomap()) ;
+          await SharedPrefs.setString(kUserData, datajson);
+
   }
 }

@@ -48,4 +48,10 @@ class CacheHelper {
     if (value is bool) return await _prefs.setBool(key, value);
     return await _prefs.setInt(key, value as int);
   }
+
+  Future<bool> putBool({required String key, required bool value}) async {
+    return await _prefs.setBool(key, value);
+  }
+
+  
 }

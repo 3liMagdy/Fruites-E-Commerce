@@ -20,7 +20,7 @@ class Homeview extends StatelessWidget {
       backgroundColor: AppColors.scaffoldBackground,
       bottomNavigationBar:  Directionality(
         textDirection: TextDirection.ltr,
-        child: BottomNavBar(currentIndex: 3,onTap: (currentIndex){},)),
+        child: BottomNavBar(currentIndex: 3,onTap: (currentIndex){},),),
 
       body: SafeArea(
         child: CustomScrollView(
@@ -30,8 +30,8 @@ class Homeview extends StatelessWidget {
               sliver: SliverToBoxAdapter(child: SizedBox(height: 20)),
             ),
 
-            const SliverPadding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+            SliverPadding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               sliver: SliverToBoxAdapter(
                 child: Directionality(
                   textDirection: TextDirection.ltr,

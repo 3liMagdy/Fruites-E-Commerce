@@ -39,4 +39,6 @@ UserEntity? getCurrentUser();
  Future deletUser();
 
   Future<UserEntity> getUserData({required String uid});
+
+  Future saveUserEntity({required UserEntity user}); 
 }

@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/assets/app_assets.dart';
+import 'package:fruits_hub/core/database/cache/get_userEntity.dart';
 import 'package:fruits_hub/core/utils/app_colors.dart';
 import 'package:fruits_hub/core/utils/app_strings/app_strings.dart';
 import 'package:fruits_hub/core/utils/app_styles.dart';
 
 class HomeHeader extends StatelessWidget {
-  const HomeHeader();
-
+   HomeHeader();
   @override
   Widget build(BuildContext context) {
+    final user = getUserEntity();
     return Row(
       children: [
         Container(
@@ -44,7 +45,9 @@ class HomeHeader extends StatelessWidget {
               AppStrings.goodMorning,
               style: CustomTextStyles.Cairo400style13,
             ),
-            Text("أحمد مصطفى", style: CustomTextStyles.Cairo700style19),
+            Text(
+             user?.name ?? "Guest",
+               style: CustomTextStyles.Cairo700style19),
           ],
         ),
         const SizedBox(width: 11),

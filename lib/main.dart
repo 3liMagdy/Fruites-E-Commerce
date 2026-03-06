@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/app/fruits.dart';
 import 'package:fruits_hub/core/app_cubit/app_cubit.dart';
 import 'package:fruits_hub/core/services/service_locator.dart';
+import 'package:fruits_hub/core/services/shared_prefs.dart';
 import 'package:fruits_hub/features/Auth/domain/repos/auth_repo.dart';
 import 'package:fruits_hub/features/Auth/presentation/manger/cubit/auth_cubit.dart';
 import 'package:fruits_hub/firebase_options.dart';
@@ -14,7 +15,7 @@ void main()async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
+   await SharedPrefs.init();
   await setupServiceLocator();
 
  runApp(

@@ -16,51 +16,58 @@ class BottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      currentIndex: currentIndex,
-      onTap: onTap,
-      selectedItemColor: AppColors.primaryColor,
-      unselectedItemColor: AppColors.lightGrey,
-
-      backgroundColor: Colors.white,
-      items: [
-       BottomNavigationBarItem(
-          icon: SvgPicture.asset(
-            AppAssets.imagesUser,
+    return ClipRRect(
+          borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(30),
+              topRight: Radius.circular(30),
           ),
-          activeIcon: SvgPicture.asset(
-            AppAssets.imagesUserFill
+      child: BottomNavigationBar(
+        
+        currentIndex: currentIndex,
+        onTap: onTap,
+        selectedItemColor: AppColors.primaryColor,
+        unselectedItemColor: AppColors.lightGrey,
+      
+        backgroundColor: Colors.white,
+        items: [
+         BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              AppAssets.imagesUser,
+            ),
+            activeIcon: SvgPicture.asset(
+              AppAssets.imagesUserFill
+            ),
+            label: "Profile",
           ),
-          label: "Profile",
-        ),
-        BottomNavigationBarItem(
-          icon: SvgPicture.asset(
-            AppAssets.imagesCart,
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              AppAssets.imagesCart,
+            ),
+            activeIcon: SvgPicture.asset(
+              AppAssets.imagesCartFill
+            ),
+            label: "Cart",
           ),
-          activeIcon: SvgPicture.asset(
-            AppAssets.imagesCartFill
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              AppAssets.imagesShopping,
+            ),
+            activeIcon: SvgPicture.asset(
+              AppAssets.imagesShoppingFill
+            ),
+            label: "Products",
           ),
-          label: "Cart",
-        ),
-        BottomNavigationBarItem(
-          icon: SvgPicture.asset(
-            AppAssets.imagesShopping,
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              AppAssets.imagesHome,
+            ),
+            activeIcon: SvgPicture.asset(
+              AppAssets.imagesHomeFill
+            ),
+            label: AppStrings.home,
           ),
-          activeIcon: SvgPicture.asset(
-            AppAssets.imagesShoppingFill
-          ),
-          label: "Products",
-        ),
-        BottomNavigationBarItem(
-          icon: SvgPicture.asset(
-            AppAssets.imagesHome,
-          ),
-          activeIcon: SvgPicture.asset(
-            AppAssets.imagesHomeFill
-          ),
-          label: AppStrings.home,
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
