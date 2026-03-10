@@ -1,35 +1,73 @@
 
 
+import 'package:fruits_hub/core/app_cubit/products_cubit/products_cubit.dart';
 import 'package:fruits_hub/core/database/cache/cache_helper.dart';
+import 'package:fruits_hub/core/repos/products_repo.dart';
+import 'package:fruits_hub/core/repos/products_repo_impl.dart';
+import 'package:fruits_hub/core/services/ProductsDatabaseService.dart';
+import 'package:fruits_hub/core/services/SupabaseDatabaseService.dart';
 import 'package:fruits_hub/core/services/data_service.dart';
-import 'package:fruits_hub/core/services/firestore_service.dart';
 import 'package:fruits_hub/features/Auth/data/repos/auth_repo_impl.dart';
 import 'package:fruits_hub/core/services/firebase_auth_service.dart';
 import 'package:fruits_hub/features/Auth/domain/repos/auth_repo.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
 
 final getIt = GetIt.instance;
 
 Future<void> setupServiceLocator() async {
-  // Register CacheHelper as an async singleton so the instance that
-  // depends on `SharedPreferences` is created asynchronously when the
-  // native plugin is ready. Do not await this here from `main()` —
-  // await `getIt.allReady()` inside the app UI (splash) to avoid
-  // calling platform channels before native plugin registration.
+
+  /// Cache
   getIt.registerSingletonAsync<CacheHelper>(() async {
     final prefs = await SharedPreferences.getInstance();
     return CacheHelper(prefs);
   });
 
-   getIt.registerLazySingleton<FirebaseAuthService>(
-    () => FirebaseAuthService(),
-  );
-   getIt.registerLazySingleton<DataService>(
-    () => FirestoreService(),
+  /// Data Service
+  getIt.registerLazySingleton<DataService>(
+    () => SupabaseDatabaseService(
+      getIt<SupabaseClient>(),
+    ),
   );
 
+  /// Firebase Auth
+  getIt.registerLazySingleton<FirebaseAuthService>(
+    () => FirebaseAuthService(),
+  );
+
+  /// Auth Repo
   getIt.registerLazySingleton<AuthRepo>(
-    () => AuthRepoImpl(getIt<FirebaseAuthService>(), dataService: getIt<DataService>()),
+    () => AuthRepoImpl(
+      getIt<FirebaseAuthService>(),
+      dataService: getIt<DataService>(),
+    ),
+  );
+
+  /// Supabase Client
+  getIt.registerLazySingleton<SupabaseClient>(
+    () => Supabase.instance.client,
+  );
+
+  /// Products Database Service
+  getIt.registerLazySingleton<ProductsDatabaseService>(
+    () => SupabaseProductsDatabaseService(
+      getIt<SupabaseClient>(),
+    ),
+  );
+
+  /// Products Repository
+  getIt.registerLazySingleton<ProductsRepo>(
+    () => ProductsRepoImpl(
+      getIt<ProductsDatabaseService>(),
+    ),
+  );
+
+  /// Products Cubit
+  getIt.registerFactory(
+    () => ProductsCubit(
+      getIt<ProductsRepo>(),
+    ),
   );
 }

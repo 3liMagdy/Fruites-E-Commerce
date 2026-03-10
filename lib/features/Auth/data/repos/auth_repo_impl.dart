@@ -113,7 +113,7 @@ await saveUserEntity(
 
     var isUserExists = await dataService.checkIfDataExists(
       path: BackendEndPoint.isCheckUserExists,
-      document_id: firebaseUser.uid,
+      docuementId: firebaseUser.uid, 
     );
 
     if (isUserExists) {
@@ -239,7 +239,7 @@ await saveUserEntity(
   
   @override
   Future<UserEntity> getUserData({required String uid}) async{
-    var data =await dataService.getData(path: BackendEndPoint.getUserData, document_id: uid);
+    var data =await dataService.getData(path: BackendEndPoint.getUserData, docuementId: uid);
     return  UserModel.fromJson(data);
   }
   
