@@ -4,6 +4,7 @@ import 'package:fruits_hub/core/database/cache/get_userEntity.dart';
 import 'package:fruits_hub/core/utils/app_colors.dart';
 import 'package:fruits_hub/core/utils/app_strings/app_strings.dart';
 import 'package:fruits_hub/core/utils/app_styles.dart';
+import 'package:fruits_hub/core/widgets/buildNotificationIcon.dart';
 
 class HomeHeader extends StatelessWidget {
    HomeHeader();
@@ -12,31 +13,7 @@ class HomeHeader extends StatelessWidget {
     final user = getUserEntity();
     return Row(
       children: [
-        Container(
-          padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: AppColors.notificationBackground,
-          ),
-          child: Stack(
-            clipBehavior: Clip.none,
-            children: [
-              Icon(Icons.notifications_none, color: AppColors.primaryColor),
-              Positioned(
-                right: 0,
-                top: 0,
-                child: Container(
-                  width: 8,
-                  height: 8,
-                  decoration: BoxDecoration(
-                    color: AppColors.notificationBadge,
-                    shape: BoxShape.circle,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
+        buildNotificationIcon(),
         const Spacer(),
         Column(
           crossAxisAlignment: CrossAxisAlignment.end,
@@ -46,8 +23,9 @@ class HomeHeader extends StatelessWidget {
               style: CustomTextStyles.Cairo400style13,
             ),
             Text(
-             user?.name ?? "Guest",
-               style: CustomTextStyles.Cairo700style19),
+              user?.name ?? "عميل", // Using "عميل" instead of "Guest"
+              style: CustomTextStyles.Cairo700style19.copyWith(color: AppColors.black),
+            ),
           ],
         ),
         const SizedBox(width: 11),
@@ -58,4 +36,6 @@ class HomeHeader extends StatelessWidget {
       ],
     );
   }
+
+ 
 }

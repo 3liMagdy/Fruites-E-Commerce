@@ -7,7 +7,7 @@ import 'package:fruits_hub/core/functions/showToast.dart';
 import 'package:fruits_hub/core/route/app_rotuer.dart';
 import 'package:fruits_hub/core/utils/app_colors.dart';
 import 'package:fruits_hub/core/utils/app_strings/Auth_strings.dart';
-import 'package:fruits_hub/core/widgets/CustonBtn.dart';
+import 'package:fruits_hub/core/widgets/CustomBtn.dart';
 import 'package:fruits_hub/features/Auth/presentation/View/widgets/CustomForgotPasswordText.dart';
 import 'package:fruits_hub/features/Auth/presentation/View/widgets/CustomTextFormField.dart';
 import 'package:fruits_hub/features/Auth/presentation/View/widgets/CustomTextSpan.dart';
@@ -98,9 +98,9 @@ class _CustomformfieldState extends State<Customformfield> {
 
              (state is AuthLoadingState)
                   ? CircularProgressIndicator(color: AppColors.primaryColor)
-                  : CustonBtn(
+                  : CustomBtn(
                       text: AuthStrings.loginButton,
-                      onpressed: () {
+                      onPressed: () {
                         if (formkey.currentState!.validate()) {
                           context.read<AuthCubit>().signInwithEmailAndPassword(
                           email: emailcontroller.text,

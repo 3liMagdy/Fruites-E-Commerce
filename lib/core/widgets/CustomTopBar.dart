@@ -1,12 +1,17 @@
+
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:fruits_hub/core/assets/app_assets.dart';
 import 'package:fruits_hub/core/widgets/custom_title.dart';
 
 class CustomTopBar extends StatelessWidget {
-  const CustomTopBar({super.key, required this.title});
-  final String title;
+  const CustomTopBar({super.key, required this.title, required this.imageicon,  this.icon, this.isProduct});
 
+  final String title;
+ final String imageicon;
+ final bool? isProduct;
+ final Widget? icon;
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -15,14 +20,14 @@ class CustomTopBar extends StatelessWidget {
       child: Stack(
         children: [
           Align(
-            alignment: Alignment.bottomRight,
+            alignment:(isProduct != null) ?Alignment.bottomLeft :Alignment.bottomRight,
             child: GestureDetector(
               
               onTap: () {},
               child: Padding(
                 padding: const EdgeInsets.only(right: 16),
-                child: SvgPicture.asset(
-                  AppAssets.imagesIconArrow,
+                child:(icon!=null)  ? icon! : SvgPicture.asset(
+                  imageicon,
                   height: 18,
                   width: 18,
                   color: Colors.black,
@@ -32,7 +37,10 @@ class CustomTopBar extends StatelessWidget {
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: CustomTitle(title: title),
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: CustomTitle(title: title),
+            ),
           ),
         ],
       ),

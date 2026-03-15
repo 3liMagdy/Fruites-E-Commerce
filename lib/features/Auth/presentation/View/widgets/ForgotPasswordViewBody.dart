@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_hub/core/assets/app_assets.dart';
 import 'package:fruits_hub/core/utils/app_strings/Auth_strings.dart';
 import 'package:fruits_hub/core/utils/app_styles.dart';
-import 'package:fruits_hub/features/Auth/presentation/View/widgets/CustomTopBar.dart';
 import 'package:fruits_hub/features/Auth/presentation/View/widgets/CustomformfieldForgotPassword.dart';
+
+import '../../../../../core/widgets/CustomTopBar.dart';
 
 class ForgotPasswordViewBody extends StatelessWidget {
   const ForgotPasswordViewBody({super.key});
@@ -13,7 +15,7 @@ class ForgotPasswordViewBody extends StatelessWidget {
       slivers: [
         SliverList(
           delegate: SliverChildListDelegate([
-            CustomTopBar(title: AuthStrings.forgotPasswordTitle),
+            CustomTopBar(title: AuthStrings.forgotPasswordTitle, imageicon: AppAssets.imagesIconArrow,),
             SizedBox(height: 28),
             Expanded(
               child: Text(

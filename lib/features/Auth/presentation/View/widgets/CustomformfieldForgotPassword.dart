@@ -6,7 +6,7 @@ import 'package:fruits_hub/core/route/app_rotuer.dart';
 import 'package:fruits_hub/core/utils/app_colors.dart';
 import 'package:fruits_hub/core/utils/app_strings/Auth_strings.dart';
 import 'package:fruits_hub/core/utils/app_strings/app_strings.dart';
-import 'package:fruits_hub/core/widgets/CustonBtn.dart';
+import 'package:fruits_hub/core/widgets/CustomBtn.dart';
 import 'package:fruits_hub/features/Auth/presentation/View/widgets/CustomTextFormField.dart';
 import 'package:fruits_hub/features/Auth/presentation/manger/cubit/auth_cubit.dart';
 
@@ -60,9 +60,9 @@ class _CustomformfieldForgotPasswordState
                   ),
                 ),
                 SizedBox(height: 30),
-                CustonBtn(
+                CustomBtn(
                   text: AuthStrings.sendPasswordResetButton,
-                  onpressed: () {
+                  onPressed: () {
                     context.read<AuthCubit>().verifyPhone(phonecontroller.text);
                   },
                 ),

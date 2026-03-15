@@ -64,7 +64,8 @@ class SupabaseProductsDatabaseService implements ProductsDatabaseService {
     final response = await client
         .from('products')
         .select()
-        .order('sellingCount', ascending: false);
+        .order('sellingCount', ascending: false)
+        .limit(4);
 
     return List<Map<String, dynamic>>.from(response);
   }

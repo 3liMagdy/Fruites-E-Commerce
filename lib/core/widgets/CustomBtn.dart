@@ -7,10 +7,10 @@ import 'package:fruits_hub/core/utils/app_strings/app_strings.dart';
 import 'package:fruits_hub/core/utils/app_styles.dart';
 import 'package:fruits_hub/generated/l10n.dart';
 
-class CustonBtn extends StatelessWidget {
-  const CustonBtn({super.key, required this.onpressed, required this.text});
+class CustomBtn extends StatelessWidget {
+  const CustomBtn({super.key, required this.onPressed, required this.text});
  final String text;
-  final VoidCallback onpressed;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class CustonBtn extends StatelessWidget {
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           
         ),
-        onPressed: onpressed,
+        onPressed: onPressed,
         child: Text(text, style: CustomTextStyles.Cairo700style16),
       ),
     );

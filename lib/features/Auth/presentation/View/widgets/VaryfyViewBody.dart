@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_hub/core/assets/app_assets.dart';
 import 'package:fruits_hub/core/functions/CustomPinTheme.dart';
 import 'package:fruits_hub/core/functions/navigation.dart';
 import 'package:fruits_hub/core/functions/showToast.dart';
@@ -8,11 +9,12 @@ import 'package:fruits_hub/core/utils/app_colors.dart';
 import 'package:fruits_hub/core/utils/app_constant.dart';
 import 'package:fruits_hub/core/utils/app_strings/Auth_strings.dart';
 import 'package:fruits_hub/core/utils/app_styles.dart';
-import 'package:fruits_hub/core/widgets/CustonBtn.dart';
-import 'package:fruits_hub/features/Auth/presentation/View/widgets/CustomTopBar.dart';
+import 'package:fruits_hub/core/widgets/CustomBtn.dart';
 import 'package:fruits_hub/features/Auth/presentation/View/widgets/OtpWidgetBody.dart';
 import 'package:fruits_hub/features/Auth/presentation/manger/cubit/auth_cubit.dart';
 import 'package:pinput/pinput.dart';
+
+import '../../../../../core/widgets/CustomTopBar.dart';
 
 class VaryfyViewBody extends StatefulWidget {
   const VaryfyViewBody({super.key});
@@ -43,7 +45,7 @@ class _VaryfyViewBodyState extends State<VaryfyViewBody> {
         return SingleChildScrollView(
           child: Column(
             children: [
-              CustomTopBar(title: AuthStrings.verificationCodeTitle),
+              CustomTopBar(title: AuthStrings.verificationCodeTitle, imageicon:  AppAssets.imagesIconArrow),
 
               SizedBox(height: 28),
 
@@ -80,8 +82,8 @@ class _VaryfyViewBodyState extends State<VaryfyViewBody> {
               SizedBox(height: 29),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: CustonBtn(
-                  onpressed: () {
+                child: CustomBtn(
+                  onPressed: () {
                     if (otpCode.length ==6 ) {
                       context.read<AuthCubit>().verifyOtp(smsCode: otpCode);
                     }

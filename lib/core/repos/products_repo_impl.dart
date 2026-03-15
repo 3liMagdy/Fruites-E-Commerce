@@ -28,6 +28,7 @@ class ProductsRepoImpl extends ProductsRepo {
       return right(products);
 
     } catch (e) {
+      print(e);
       return left(ServerFailure('Failed to get products'));
     }
   }
@@ -44,6 +45,7 @@ class ProductsRepoImpl extends ProductsRepo {
       return right(products);
 
     } catch (e) {
+        print(e);
       return left(ServerFailure('Failed to get best selling products'));
     }
   }

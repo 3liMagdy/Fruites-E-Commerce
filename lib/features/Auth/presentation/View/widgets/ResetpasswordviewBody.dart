@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_hub/core/assets/app_assets.dart';
 import 'package:fruits_hub/core/utils/app_colors.dart';
 import 'package:fruits_hub/core/utils/app_strings/Auth_strings.dart';
 import 'package:fruits_hub/core/utils/app_styles.dart';
 import 'package:fruits_hub/features/Auth/presentation/View/widgets/CustomFormResetPassword.dart';
-import 'package:fruits_hub/features/Auth/presentation/View/widgets/CustomTopBar.dart';
+
+import '../../../../../core/widgets/CustomTopBar.dart';
 
 class ResetpasswordviewBody extends StatelessWidget {
   const ResetpasswordviewBody({super.key});
@@ -14,7 +16,7 @@ class ResetpasswordviewBody extends StatelessWidget {
       slivers: [
         SliverList(
           delegate: SliverChildListDelegate([
-            CustomTopBar(title: AuthStrings.newPasswordHint),
+            CustomTopBar(title: AuthStrings.newPasswordHint, imageicon: AppAssets.imagesIconArrow,),
             SizedBox(height: 28),
             Expanded(
               child: Text(

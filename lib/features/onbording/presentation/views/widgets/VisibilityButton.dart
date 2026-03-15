@@ -3,16 +3,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/utils/app_strings/app_strings.dart';
-import 'package:fruits_hub/core/widgets/CustonBtn.dart';
+import 'package:fruits_hub/core/widgets/CustomBtn.dart';
 
 class VisibilityButton extends StatelessWidget {
   const VisibilityButton({
-    super.key, required this.isVisible, required this.onpressed,
+    super.key, required this.isVisible, required this.onPressed,
     
   });
 
   final bool isVisible;
-  final VoidCallback onpressed;
+  final VoidCallback onPressed;
 
 
 
@@ -27,8 +27,8 @@ class VisibilityButton extends StatelessWidget {
         padding: const EdgeInsets.only(bottom: 17),
         child: Padding(
           padding: const EdgeInsets.only(bottom: 16.0),
-          child: CustonBtn(
-            onpressed: onpressed,
+          child: CustomBtn(
+            onPressed: onPressed,
             text: AppStrings.startnow,
           ),
         ),

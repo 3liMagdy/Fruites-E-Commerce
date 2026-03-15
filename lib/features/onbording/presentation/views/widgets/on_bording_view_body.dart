@@ -32,7 +32,9 @@ class OnBordingViewBody extends StatelessWidget {
               const SizedBox(height: 29),
               VisibilityButton(
                 isVisible: state.pageIndex == 1,
-                onpressed: cubit.getStarted,
+                  onPressed: () {
+cubit.getStarted();
+                  },
               ),
             ],
           );

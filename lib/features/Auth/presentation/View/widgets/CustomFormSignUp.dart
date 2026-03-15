@@ -5,7 +5,7 @@ import 'package:fruits_hub/core/functions/showToast.dart';
 import 'package:fruits_hub/core/route/app_rotuer.dart';
 import 'package:fruits_hub/core/utils/app_colors.dart';
 import 'package:fruits_hub/core/utils/app_strings/Auth_strings.dart';
-import 'package:fruits_hub/core/widgets/CustonBtn.dart';
+import 'package:fruits_hub/core/widgets/CustomBtn.dart';
 import 'package:fruits_hub/features/Auth/presentation/View/widgets/CustomTextFormField.dart';
 import 'package:fruits_hub/features/Auth/presentation/View/widgets/CustomTextSpan.dart';
 import 'package:fruits_hub/features/Auth/presentation/View/widgets/TermsAndConditionsWidget.dart';
@@ -103,9 +103,9 @@ class _CustomformfieldSignUpState extends State<CustomformfieldSignUp> {
 
                 SizedBox(height: 30),
 
-                CustonBtn(
+                CustomBtn(
                   text: AuthStrings.signUpButton,
-                  onpressed: () {
+                  onPressed: () {
                     if (formkey.currentState!.validate()) {
                       if(isCheck){
                         context.read<AuthCubit>().signUp(
