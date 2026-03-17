@@ -7,13 +7,13 @@ import 'package:fruits_hub/features/Auth/presentation/View/view/forgot_password_
 import 'package:fruits_hub/features/Auth/presentation/View/view/signin/signin_view.dart';
 import 'package:fruits_hub/features/Auth/presentation/View/view/signup/signup_view.dart';
 import 'package:fruits_hub/features/Auth/presentation/View/view/varyfy_view/VaryfyView.dart';
+import 'package:fruits_hub/features/cart/presentation/view/cart_view.dart';
 import 'package:fruits_hub/features/home/presentation/view/HomeView.dart';
 import 'package:fruits_hub/features/onbording/presentation/manger/cubit/on_bording_cubit.dart';
 import 'package:fruits_hub/features/onbording/presentation/views/view/on_bording_view.dart';
 import 'package:fruits_hub/features/home/presentation/view/MainView.dart';
 import 'package:fruits_hub/features/product_details/presentation/view/ProductDetailsView.dart';
 import 'package:fruits_hub/features/products/presentation/view/ProductsView.dart';
-import 'package:fruits_hub/features/cart/presentation/view/CartView.dart';
 import 'package:fruits_hub/features/checkout/presentation/view/CheckoutView.dart';
 import 'package:fruits_hub/features/profile/presentation/view/views/ProfileView/ProfileView.dart';
 import 'package:fruits_hub/features/profile/presentation/view/views/EditProfileView/EditProfileView.dart';

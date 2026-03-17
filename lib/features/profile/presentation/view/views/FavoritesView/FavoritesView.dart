@@ -14,6 +14,7 @@ class FavoritesView extends StatelessWidget {
     final List<ProductEntity> products = List.generate(
       4,
       (index) => ProductEntity(
+        id: index.toString(),
         name: index % 2 == 0 ? 'أفوكادو' : 'بطيخ عراقي',
         code: '123',
         description: 'وصف المنتج',

@@ -4,7 +4,7 @@ import 'package:fruits_hub/core/entities/product_entity.dart';
 import 'package:fruits_hub/core/functions/navigation.dart';
 import 'package:fruits_hub/core/route/app_rotuer.dart';
 import 'package:fruits_hub/core/widgets/ProductCard.dart';
-import 'package:fruits_hub/features/cart/presentation/manger/cubit/cart_cubit.dart';
+import 'package:fruits_hub/features/cart/presentation/manager/cubit/cart_cubit.dart';
 import 'package:go_router/go_router.dart';
 
 class ProductsGridSliver extends StatelessWidget {

@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:fruits_hub/core/assets/app_assets.dart';
 import 'package:fruits_hub/core/entities/product_entity.dart';
 import 'package:fruits_hub/core/utils/app_colors.dart';
 import 'package:fruits_hub/core/utils/app_styles.dart';
-import 'package:fruits_hub/features/cart/presentation/view/widgets/buildFooter.dart';
-import 'package:fruits_hub/features/cart/presentation/view/widgets/buildHeader.dart';
-import 'package:fruits_hub/features/cart/presentation/view/widgets/buildProductImage.dart';
+import 'package:fruits_hub/features/cart/presentation/view/widgets/cart_item_footer.dart';
+import 'package:fruits_hub/features/cart/presentation/view/widgets/cart_item_header.dart';
+import 'package:fruits_hub/features/cart/presentation/view/widgets/cart_item_image.dart';
 
-class CartItem extends StatelessWidget {
-  const CartItem({super.key, required this.product, this.quantity = 1,});
-   final ProductEntity product;
-  final  int quantity;
+class CartItemWidget extends StatelessWidget {
+  const CartItemWidget({
+    super.key,
+    required this.product,
+    this.quantity = 1,
+  });
 
+  final ProductEntity product;
+  final int quantity;
 
   @override
   Widget build(BuildContext context) {
@@ -31,29 +33,28 @@ class CartItem extends StatelessWidget {
         ],
       ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Buildproductimage(image: product.imageUrl!),
+          CartItemImage(imageUrl: product.imageUrl ?? ''),
           const SizedBox(width: 16),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Buildheader(
-                  name:  product.name,
-                 ),
+                CartItemHeader(product: product),
                 Text(
-                  '1.0 كيلو', 
+                  // Dynamic display based on entity instead of hardcoded '1.0 كيلو'
+                  '${product.unitAmount} كيلو',
                   style: CustomTextStyles.Cairo600style13.copyWith(
                     color: AppColors.orange,
                     fontSize: 14,
                   ),
                 ),
                 const SizedBox(height: 8),
-                Buildfooter(
-                  count:quantity,
+                CartItemFooter(
+                  quantity: quantity,
                   product: product,
-                  price: product.price.toString(),
-                  ),
+                ),
               ],
             ),
           ),
@@ -62,7 +63,3 @@ class CartItem extends StatelessWidget {
     );
   }
 }
-
-
-
-

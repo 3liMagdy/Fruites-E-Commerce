@@ -18,7 +18,9 @@ class ProductDetailsViewBody extends StatelessWidget {
          
         /// Image Section
          SliverToBoxAdapter(
-          child: ProductImageSection(image:product.imageUrl! ,),
+          child: ProductImageSection(
+            product: product,
+           ),
         ),
 
         /// Content

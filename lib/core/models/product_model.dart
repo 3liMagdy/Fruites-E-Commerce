@@ -4,6 +4,7 @@ import 'package:fruits_hub/core/functions/get_avg_rating.dart';
 import 'package:fruits_hub/core/models/review_model.dart';
 
 class ProductModel {
+  final String id;
   final String name;
   final String code;
   final String description;
@@ -20,7 +21,8 @@ class ProductModel {
   final int unitAmount;
   final List<ReviewModel> reviews;
   ProductModel(
-      {required this.name,
+      {
+        required this.name,
       required this.code,
       required this.description,
       required this.expirationsMonths,
@@ -32,10 +34,11 @@ class ProductModel {
       required this.price,
       required this.isOrganic,
       required this.isFeatured,
-      this.imageUrl, required this.ratingCount});
+      this.imageUrl, required this.ratingCount, required this.id});
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
+      id: json['id'],
       avgRating: getAvgRating(json['reviews'] != null
           ? List<ReviewModel>.from(
               json['reviews'].map((e) => ReviewModel.fromJson(e)))
@@ -61,6 +64,7 @@ class ProductModel {
 
   ProductEntity toEntity() {
     return ProductEntity(
+        id: id,
         name: name,
         code: code,
         description: description,

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/assets/app_assets.dart';
+import 'package:fruits_hub/core/entities/product_entity.dart';
 import 'package:fruits_hub/core/utils/app_colors.dart';
 import 'package:fruits_hub/features/product_details/presentation/view/widgets/BottomCurveClipperImage.dart';
 
 class ProductImageSection extends StatelessWidget {
-  const ProductImageSection({super.key, required this.image});
-  final String image ;
+  const ProductImageSection({super.key,  required this.product});
+  final ProductEntity product;
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +20,9 @@ class ProductImageSection extends StatelessWidget {
             color: AppColors.lighterGrey,
             padding: const EdgeInsets.only(top: 20, bottom: 60),
             child: Hero(
-              tag: 'product_image',
+              tag: 'product_${product.id}',
               child: Image.network(
-                image,
+                 product.imageUrl!,
                 fit: BoxFit.contain,
                 height: height*0.4,
               ),

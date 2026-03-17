@@ -9,7 +9,8 @@ import 'package:fruits_hub/core/services/shared_prefs.dart';
 import 'package:fruits_hub/core/utils/supabase_keys.dart';
 import 'package:fruits_hub/features/Auth/domain/repos/auth_repo.dart';
 import 'package:fruits_hub/features/Auth/presentation/manger/cubit/auth_cubit.dart';
-import 'package:fruits_hub/features/cart/presentation/manger/cubit/cart_cubit.dart';
+import 'package:fruits_hub/features/cart/domain/usecases/manage_cart_use_case.dart';
+import 'package:fruits_hub/features/cart/presentation/manager/cubit/cart_cubit.dart';
 import 'package:fruits_hub/firebase_options.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -33,7 +34,9 @@ void main() async {
     MultiBlocProvider(
       providers: [
         BlocProvider(
-      create: (_) => CartCubit(),
+      create: (_) => CartCubit(
+        manageCartUseCase: getIt<ManageCartUseCase>(),
+      ),
     ),
         BlocProvider(
           create: (_) => AppCubit(getIt<AuthRepo>())..checkAuthStatus(),

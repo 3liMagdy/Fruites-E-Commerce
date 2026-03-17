@@ -43,7 +43,7 @@ class ProductCard extends StatelessWidget {
                   height: 100,
                   width: double.infinity,
                   child: Hero(
-                    tag: productEntity.name,
+                     tag: 'product_${productEntity.id}',
                     child: productEntity.imageUrl != null
                         ? Container(
                             color: Colors.white,

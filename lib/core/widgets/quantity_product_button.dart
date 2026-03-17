@@ -4,7 +4,7 @@ import 'package:fruits_hub/core/entities/product_entity.dart';
 import 'package:fruits_hub/core/utils/app_styles.dart';
 import 'package:fruits_hub/core/widgets/buildAddButton.dart';
 import 'package:fruits_hub/core/widgets/buildRemoveButton.dart';
-import 'package:fruits_hub/features/cart/presentation/manger/cubit/cart_cubit.dart';
+import 'package:fruits_hub/features/cart/presentation/manager/cubit/cart_cubit.dart';
 
 class QuantityProductButton extends StatelessWidget {
   const QuantityProductButton({super.key, required this.count, required this.product});
@@ -16,7 +16,7 @@ class QuantityProductButton extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         BuildAddButton(onTap: () {
-           context.read<CartCubit>().increase(product);
+          context.read<CartCubit>().increase(product);
         }),
         const SizedBox(width: 16),
          Text(
